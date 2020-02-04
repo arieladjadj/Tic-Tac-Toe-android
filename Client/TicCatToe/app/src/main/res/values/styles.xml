@@ -1,0 +1,23 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@android:color/darker_gray</item>
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="ToolbarStyle" parent="Widget.AppCompat.Toolbar">
+        <item name="android:background">@drawable/waiting_title_design</item>
+        <item name="android:layoutDirection">ltr</item>
+    </style>
+
+    <style name="ToolbarText" parent="Widget.AppCompat.AutoCompleteTextView">
+        <item name="android:textColor">#FFFFFF</item>
+        <item name="android:textSize">50sp</item>
+        <item name="android:gravity">left</item>
+        <item name="android:fontFamily">@font/allan</item>
+    </style>
+
+</resources>

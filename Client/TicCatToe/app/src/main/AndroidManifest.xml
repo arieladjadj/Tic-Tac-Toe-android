@@ -9,6 +9,7 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".SingleMode"></activity>
         <activity android:name=".Online" />
         <activity android:name=".HomePage" />
         <activity android:name=".ShowIcon">

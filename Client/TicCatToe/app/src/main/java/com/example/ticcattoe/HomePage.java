@@ -104,6 +104,9 @@ public class HomePage extends AppCompatActivity implements View.OnClickListener 
         else if(view == btnOnline && !this.catsShowUp) {
             Intent intent = new Intent(this, Online.class);
             startActivityForResult(intent,0);
+        }else if(view == btnSingleMode) {
+            Intent intent = new Intent(this, SingleMode.class);
+            startActivityForResult(intent,1);
         }else if(view == exitApp){
                 finish();
         }

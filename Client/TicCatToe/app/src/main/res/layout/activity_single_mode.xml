@@ -1,46 +1,85 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:theme="@style/AppTheme"
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
-    android:background="#FFFFFF"
-    tools:context=".Online"
+    android:background="@drawable/tic_tac_toe_board3"
+    tools:context=".SingleMode"
     android:orientation="vertical"
+    android:id="@+id/main_layout"
     >
     <include
         android:id="@+id/toolbar"
         layout="@layout/toolbar"
         />
-
-    <LinearLayout
+    
+    <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:orientation="vertical"
-        android:weightSum="20"
+        android:rowCount="3"
+        android:gravity="center_vertical|center_horizontal"
+        android:columnCount="3"
+        android:layout_below="@+id/toolbar"
         >
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:layout_weight="18"
+        <!--Row 0 -->
+        <TableRow
             >
-            <ImageView
-                android:id="@+id/imageView"
-                android:layout_width="match_parent"
-                android:layout_gravity="center|center"
-                android:layout_marginLeft="10dp"
-                android:layout_marginRight="10dp"
-                android:layout_height="match_parent"
-                android:src="@drawable/tic_tac_toe_board"
+            <Button
+                android:id="@+id/btn00"
+                style="@style/ButtonStyle"
                 />
 
+            <Button
+                android:id="@+id/btn01"
+                style="@style/ButtonStyle"
+                />
 
-        </LinearLayout>
+              <Button
+                  android:id="@+id/btn02"
+                  style="@style/ButtonStyle"
+                />
+        </TableRow>
 
-    </LinearLayout>
+        <!-- Row 1-->
+        <TableRow>
+            <Button
+                android:id="@+id/btn10"
+                style="@style/ButtonStyle"
+                />
 
+            <Button
+                android:id="@+id/btn11"
+                style="@style/ButtonStyle"
+                />
 
-</LinearLayout>
+            <Button
+                android:id="@+id/btn12"
+                style="@style/ButtonStyle"
+                />
+
+        </TableRow>
+
+        <!-- Row 2-->
+        <TableRow>
+            <Button
+                android:id="@+id/btn20"
+                style="@style/ButtonStyle"
+                />
+
+            <Button
+                android:id="@+id/btn21"
+                style="@style/ButtonStyle"
+                />
+
+            <Button
+                android:id="@+id/btn22"
+                style="@style/ButtonStyle"
+                />
+
+        </TableRow>
+    </TableLayout>
+</RelativeLayout>

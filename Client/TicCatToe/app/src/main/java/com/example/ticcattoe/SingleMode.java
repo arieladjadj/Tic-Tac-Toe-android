@@ -15,7 +15,11 @@ public class SingleMode extends AppCompatActivity implements View.OnClickListene
 
     Dialog waitingDialog, exitingDialog;
     Button stayInActivity, returnToHomePageBtn;
-    Toolbar mainToolbar, waitingDialogToolbar, exitingDialogToolbar;
+    Toolbar mainToolbar, exitingDialogToolbar;
+    char[][] board;
+    Button[][] btnsBoard;
+    AI_Player ai_player;
+    char aiPlayerCh, playerCh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,7 +35,31 @@ public class SingleMode extends AppCompatActivity implements View.OnClickListene
                 createExitDialog();
             }
         });
-        createWaitingDialog();
+        generateBoard();
+        generateBtnsBoard();
+        this.aiPlayerCh='O';
+        this.playerCh='X';
+        this.ai_player = new AI_Player(this.aiPlayerCh, this.playerCh);
+    }
+
+    private void generateBoard() {
+        this.board = new char[3][3];
+        for(int i=0; i<3;i++){ for(int j=0; j<3;j++){ this.board[i][j]='-'; } }
+    }
+
+    private void generateBtnsBoard(){
+        this.btnsBoard = new Button[3][3];
+        this.btnsBoard[0][0] = findViewById(R.id.btn00);
+        this.btnsBoard[0][1] = findViewById(R.id.btn01);
+        this.btnsBoard[0][2] = findViewById(R.id.btn02);
+        this.btnsBoard[1][0] = findViewById(R.id.btn10);
+        this.btnsBoard[1][1] = findViewById(R.id.btn11);
+        this.btnsBoard[1][2] = findViewById(R.id.btn12);
+        this.btnsBoard[2][0] = findViewById(R.id.btn20);
+        this.btnsBoard[2][1] = findViewById(R.id.btn21);
+        this.btnsBoard[2][2] = findViewById(R.id.btn22);
+
+        for(int i=0; i<3;i++){for(int j=0;j<3;j++){this.btnsBoard[i][j].setOnClickListener(this);}}
     }
 
     private void createExitDialog() {
@@ -51,32 +79,26 @@ public class SingleMode extends AppCompatActivity implements View.OnClickListene
         exitingDialog.show();
 
     }
-    private void createWaitingDialog() {
-        this.waitingDialog = new Dialog(this);
-        waitingDialog.setContentView(R.layout.waiting_dialog);
-        waitingDialogToolbar = (Toolbar)this.waitingDialog.findViewById(R.id.waitingDialogToolbar);
-        waitingDialogToolbar.setLayoutDirection(View.LAYOUT_DIRECTION_LTR);
-        waitingDialogToolbar.setNavigationIcon(R.drawable.ic_arrow_back_white_50dp);
-        waitingDialog.setCancelable(false);
-        waitingDialogToolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                createExitDialog();
-            }
-        });
-        waitingDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
-        waitingDialog.show();
-    }
 
 
     @Override
     public void onClick(View view) {
         if(view == stayInActivity ) {
-            createWaitingDialog();
+            this.exitingDialog.cancel();
         }else if(view == returnToHomePageBtn){
             Intent intent = new Intent();
             setResult(RESULT_OK,intent);
             finish();
+        } else if(view instanceof Button) { //btn click
+            Button btn = (Button)view;
+            if(!(btn.getText().toString().equals('X') || btn.getText().toString().equals('O'))) {
+                btn.setText(String.valueOf(this.playerCh));
+            }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        createExitDialog();
     }
 }

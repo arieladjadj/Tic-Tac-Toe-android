@@ -1,8 +1,12 @@
 package com.example.ticcattoe;
 
+import android.content.Context;
+
 public class AI_Player {
 
     private char aiPlayerCH, playerCh;
+    private Context context;
+    private SingleMode singleMode;
 
     private class Move{
         int row, col;
@@ -10,14 +14,18 @@ public class AI_Player {
         public Move(){}
     }
 
-    public AI_Player(char aiPlayerCH, char playerCh) {
+    public AI_Player(char aiPlayerCH, char playerCh, Context context) {
         this.aiPlayerCH = aiPlayerCH;
         this.playerCh = playerCh;
+        this.context = context;
+        this.singleMode = (SingleMode)context;
     }
 
     public void makeMove(char[][] board) {
         Move move = getBestMove(board, this.aiPlayerCH);
         board[move.row][move.col] = this.aiPlayerCH;
+        this.singleMode.btnsBoard[move.row][move.col].setText(String.valueOf(this.aiPlayerCH));
+        this.singleMode.board[move.row][move.col] = this.aiPlayerCH;
     }
 
     private Move getBestMove(char[][] board, char AIPlayerCh) {

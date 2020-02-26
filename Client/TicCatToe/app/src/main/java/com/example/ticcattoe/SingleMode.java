@@ -7,8 +7,10 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 import android.widget.Toolbar;
 
 public class SingleMode extends AppCompatActivity implements View.OnClickListener {
@@ -39,7 +41,7 @@ public class SingleMode extends AppCompatActivity implements View.OnClickListene
         generateBtnsBoard();
         this.aiPlayerCh='O';
         this.playerCh='X';
-        this.ai_player = new AI_Player(this.aiPlayerCh, this.playerCh);
+        this.ai_player = new AI_Player(this.aiPlayerCh, this.playerCh, this);
     }
 
     private void generateBoard() {
@@ -91,14 +93,66 @@ public class SingleMode extends AppCompatActivity implements View.OnClickListene
             finish();
         } else if(view instanceof Button) { //btn click
             Button btn = (Button)view;
-            if(!(btn.getText().toString().equals('X') || btn.getText().toString().equals('O'))) {
-                btn.setText(String.valueOf(this.playerCh));
-            }
+            int[] pos = findPos(btn);
+            makeMove(pos[0], pos[1]);
         }
     }
 
     @Override
     public void onBackPressed() {
         createExitDialog();
+    }
+
+    private void makeMove(int row, int col) {
+        if(this.board[row][col] == '-') {
+            this.btnsBoard[row][col].setText(String.valueOf(this.playerCh));
+            this.board[row][col] = this.playerCh;
+            String boardState = getBoardState();
+            if(boardState == BoardState.NOTHING){
+                this.ai_player.makeMove(this.board);
+                boardState = getBoardState();
+            }
+
+            if(boardState != BoardState.NOTHING){
+                finishGame(boardState);
+            }
+
+        }
+    }
+
+    private int[] findPos(Button btn){
+        int[] pos = null;
+        for(int i=0; i<3 && pos==null; i++){ for(int j=0;j<3;j++){ if(this.btnsBoard[i][j] == btn) pos =  new int[] {i,j}; } }
+        return pos;
+    }
+
+    private String getBoardState(){
+        if(BoardState.isWin(this.board, this.aiPlayerCh)) return BoardState.AI_PLAYER_WIN;
+        else if(BoardState.isWin(this.board, this.playerCh)) return BoardState.PLAYER_WIN;
+        else if(BoardState.isDraw(this.board)) return BoardState.DRAW;
+        return BoardState.NOTHING;
+    }
+
+    private void finishGame(String boardState) {
+        if(boardState.equals(BoardState.AI_PLAYER_WIN)){
+            Toast.makeText(this, "AI Won", Toast.LENGTH_LONG).show();
+        }else if(boardState.equals(BoardState.DRAW)){
+            Toast.makeText(this, "Draw", Toast.LENGTH_LONG).show();
+        }else{ ///never going to happen
+
+        }
+        final Handler handler = new Handler();
+        handler.postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                resetBoards();
+            }
+        }, 1200);
+
+    }
+
+    private void resetBoards() {
+        for(int i=0; i<3;i++){for(int j=0; j<3; j++){this.board[i][j]='-';}}
+        for(int i=0; i<3;i++){for(int j=0; j<3; j++){this.btnsBoard[i][j].setText("");}}
     }
 }

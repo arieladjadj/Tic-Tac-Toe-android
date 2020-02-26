@@ -6,12 +6,7 @@
     </shared>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="df1eea98-2e23-4d61-8b9e-5c5c5c058c99" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/app/src/main/res/drawable/tic_tac_toe_board4.jpg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ticcattoe/AI_Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ticcattoe/AI_Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/src/main/java/com/example/ticcattoe/SingleMode.java" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/java/com/example/ticcattoe/SingleMode.java" afterDir="false" />
-    </list>
+    <list default="true" id="df1eea98-2e23-4d61-8b9e-5c5c5c058c99" name="Default Changelist" comment="" />
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />

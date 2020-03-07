@@ -6,7 +6,7 @@
     android:theme="@style/AppTheme"
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
-    android:background="@drawable/tic_tac_toe_board3"
+    android:background="@drawable/tic_tac_toe_board4"
     tools:context=".Online"
     android:orientation="vertical"
     android:id="@+id/main_layout"

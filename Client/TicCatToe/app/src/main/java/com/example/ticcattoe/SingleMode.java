@@ -105,6 +105,7 @@ public class SingleMode extends AppCompatActivity implements View.OnClickListene
 
     private void makeMove(int row, int col) {
         if(this.board[row][col] == '-') {
+            //start anim
             this.btnsBoard[row][col].setText(String.valueOf(this.playerCh));
             this.board[row][col] = this.playerCh;
             String boardState = getBoardState();

@@ -9,7 +9,6 @@
     android:background="@drawable/tic_tac_toe_board4"
     tools:context=".SingleMode"
 
-    
     android:orientation="vertical"
     android:id="@+id/main_layout"
     >
@@ -17,7 +16,72 @@
         android:id="@+id/toolbar"
         layout="@layout/toolbar"
         />
-    
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/toolbar"
+        android:id="@+id/results"
+        android:weightSum="3"
+        android:orientation="horizontal">
+
+        <ImageView
+            style="@style/ButtonStyle"
+            android:layout_weight="1"
+            android:src="@drawable/tct_x"/>
+        <ImageView
+            style="@style/ButtonStyle"
+            android:layout_weight="1"
+            android:src="@drawable/tct_o"/>
+
+        <ImageView
+            style="@style/ButtonStyle"
+            android:layout_weight="1"
+            android:src="@drawable/tct_d"/>
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/results"
+        android:weightSum="3"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="0"
+            android:id="@+id/o_results"
+            android:gravity="center"
+            android:textColor="@color/color2"
+            android:textSize="40sp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="0"
+            android:id="@+id/x_results"
+            android:gravity="center"
+            android:textColor="@color/color1"
+            android:textSize="40sp"
+            android:layout_weight="1"/>
+
+        <TextView
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="5dp"
+            android:text="0"
+            android:id="@+id/d_results"
+            android:gravity="center"
+            android:textColor="#000000"
+            android:textSize="40sp"
+            android:layout_weight="1"/>
+
+
+    </LinearLayout>
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -30,17 +94,17 @@
         <!--Row 0 -->
         <TableRow
             >
-            <Button
+            <ImageView
                 android:id="@+id/btn00"
                 style="@style/ButtonStyle"
                 />
 
-            <Button
+            <ImageView
                 android:id="@+id/btn01"
                 style="@style/ButtonStyle"
                 />
 
-              <Button
+              <ImageView
                   android:id="@+id/btn02"
                   style="@style/ButtonStyle"
                 />
@@ -48,17 +112,17 @@
 
         <!-- Row 1-->
         <TableRow>
-            <Button
+            <ImageView
                 android:id="@+id/btn10"
                 style="@style/ButtonStyle"
                 />
 
-            <Button
+            <ImageView
                 android:id="@+id/btn11"
                 style="@style/ButtonStyle"
                 />
 
-            <Button
+            <ImageView
                 android:id="@+id/btn12"
                 style="@style/ButtonStyle"
                 />
@@ -67,17 +131,17 @@
 
         <!-- Row 2-->
         <TableRow>
-            <Button
+            <ImageView
                 android:id="@+id/btn20"
                 style="@style/ButtonStyle"
                 />
 
-            <Button
+            <ImageView
                 android:id="@+id/btn21"
                 style="@style/ButtonStyle"
                 />
 
-            <Button
+            <ImageView
                 android:id="@+id/btn22"
                 style="@style/ButtonStyle"
                 />

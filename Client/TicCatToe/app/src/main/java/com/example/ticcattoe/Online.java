@@ -10,6 +10,7 @@ import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -18,6 +19,9 @@ public class Online extends AppCompatActivity implements View.OnClickListener {
     Dialog waitingDialog, exitingDialog;
     Button stayInActivity, returnToHomePageBtn;
     Toolbar mainToolbar, waitingDialogToolbar, exitingDialogToolbar;
+    char[][] board;
+    ImageView[][] imgsBoard;
+    char playerCh, opponentCh;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -80,7 +84,6 @@ public class Online extends AppCompatActivity implements View.OnClickListener {
             finish();
         }
     }
-
 
     @Override
     public void onBackPressed() {

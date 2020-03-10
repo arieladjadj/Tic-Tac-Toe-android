@@ -8,8 +8,11 @@ import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.os.Handler;
+import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.Toolbar;
 
@@ -19,8 +22,10 @@ public class SingleMode extends AppCompatActivity implements View.OnClickListene
     Button stayInActivity, returnToHomePageBtn;
     Toolbar mainToolbar, exitingDialogToolbar;
     char[][] board;
-    Button[][] btnsBoard;
+    ImageView[][] imgsBoard;
     AI_Player ai_player;
+    int xWins, oWins, draw;
+    TextView xWinsTV, oWinsTV, drawTV;
     char aiPlayerCh, playerCh;
 
     @Override
@@ -38,9 +43,15 @@ public class SingleMode extends AppCompatActivity implements View.OnClickListene
             }
         });
         generateBoard();
-        generateBtnsBoard();
+        generateImgsBoard();
         this.aiPlayerCh='O';
         this.playerCh='X';
+        xWins =0 ;
+        oWins=0;
+        draw=0;
+        this.xWinsTV = (TextView)findViewById(R.id.x_results);
+        this.oWinsTV = (TextView) findViewById(R.id.o_results);
+        this.drawTV = (TextView)findViewById(R.id.d_results);
         this.ai_player = new AI_Player(this.aiPlayerCh, this.playerCh, this);
     }
 
@@ -49,19 +60,19 @@ public class SingleMode extends AppCompatActivity implements View.OnClickListene
         for(int i=0; i<3;i++){ for(int j=0; j<3;j++){ this.board[i][j]='-'; } }
     }
 
-    private void generateBtnsBoard(){
-        this.btnsBoard = new Button[3][3];
-        this.btnsBoard[0][0] = findViewById(R.id.btn00);
-        this.btnsBoard[0][1] = findViewById(R.id.btn01);
-        this.btnsBoard[0][2] = findViewById(R.id.btn02);
-        this.btnsBoard[1][0] = findViewById(R.id.btn10);
-        this.btnsBoard[1][1] = findViewById(R.id.btn11);
-        this.btnsBoard[1][2] = findViewById(R.id.btn12);
-        this.btnsBoard[2][0] = findViewById(R.id.btn20);
-        this.btnsBoard[2][1] = findViewById(R.id.btn21);
-        this.btnsBoard[2][2] = findViewById(R.id.btn22);
+    private void generateImgsBoard(){
+        this.imgsBoard = new ImageView[3][3];
+        this.imgsBoard[0][0] = findViewById(R.id.btn00);
+        this.imgsBoard[0][1] = findViewById(R.id.btn01);
+        this.imgsBoard[0][2] = findViewById(R.id.btn02);
+        this.imgsBoard[1][0] = findViewById(R.id.btn10);
+        this.imgsBoard[1][1] = findViewById(R.id.btn11);
+        this.imgsBoard[1][2] = findViewById(R.id.btn12);
+        this.imgsBoard[2][0] = findViewById(R.id.btn20);
+        this.imgsBoard[2][1] = findViewById(R.id.btn21);
+        this.imgsBoard[2][2] = findViewById(R.id.btn22);
 
-        for(int i=0; i<3;i++){for(int j=0;j<3;j++){this.btnsBoard[i][j].setOnClickListener(this);}}
+        for(int i=0; i<3;i++){for(int j=0;j<3;j++){this.imgsBoard[i][j].setOnClickListener(this);}}
     }
 
     private void createExitDialog() {
@@ -91,9 +102,9 @@ public class SingleMode extends AppCompatActivity implements View.OnClickListene
             Intent intent = new Intent();
             setResult(RESULT_OK,intent);
             finish();
-        } else if(view instanceof Button) { //btn click
-            Button btn = (Button)view;
-            int[] pos = findPos(btn);
+        } else if(view instanceof ImageView) { //btn click
+            ImageView img = (ImageView) view;
+            int[] pos = findPos(img);
             makeMove(pos[0], pos[1]);
         }
     }
@@ -105,7 +116,8 @@ public class SingleMode extends AppCompatActivity implements View.OnClickListene
 
     private void makeMove(int row, int col) {
         if(this.board[row][col] == '-') {
-            this.btnsBoard[row][col].setText(String.valueOf(this.playerCh));
+            if(this.playerCh == 'O') this.imgsBoard[row][col].setImageResource(R.drawable.tct_o);
+            else {this.imgsBoard[row][col].setImageResource(R.drawable.tct_x); }
             this.board[row][col] = this.playerCh;
             String boardState = getBoardState();
             if(boardState == BoardState.NOTHING){
@@ -120,9 +132,9 @@ public class SingleMode extends AppCompatActivity implements View.OnClickListene
         }
     }
 
-    private int[] findPos(Button btn){
+    private int[] findPos(ImageView img){
         int[] pos = null;
-        for(int i=0; i<3 && pos==null; i++){ for(int j=0;j<3;j++){ if(this.btnsBoard[i][j] == btn) pos =  new int[] {i,j}; } }
+        for(int i=0; i<3 && pos==null; i++){ for(int j=0;j<3;j++){ if(this.imgsBoard[i][j] == img) pos =  new int[] {i,j}; } }
         return pos;
     }
 
@@ -134,25 +146,37 @@ public class SingleMode extends AppCompatActivity implements View.OnClickListene
     }
 
     private void finishGame(String boardState) {
+        Toast t = null;
         if(boardState.equals(BoardState.AI_PLAYER_WIN)){
-            Toast.makeText(this, "AI Won", Toast.LENGTH_LONG).show();
+            t = Toast.makeText(this, "AI Won", Toast.LENGTH_SHORT);
+            if(this.aiPlayerCh == '0')this.oWins++;
+            else this.xWins++;
         }else if(boardState.equals(BoardState.DRAW)){
-            Toast.makeText(this, "Draw", Toast.LENGTH_LONG).show();
+            t =Toast.makeText(this, "Draw", Toast.LENGTH_SHORT);
+            this.draw++;
         }else{ ///never going to happen
-
         }
+        updateResults();
+        t.setGravity(Gravity.CENTER,0,0);
+        t.show();
         final Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             @Override
             public void run() {
                 resetBoards();
             }
-        }, 1200);
+        }, 800);
 
+    }
+
+    private void updateResults() {
+        this.xWinsTV.setText(Integer.toString(xWins));
+        this.oWinsTV.setText(Integer.toString(oWins));
+        this.drawTV.setText(Integer.toString(draw));
     }
 
     private void resetBoards() {
         for(int i=0; i<3;i++){for(int j=0; j<3; j++){this.board[i][j]='-';}}
-        for(int i=0; i<3;i++){for(int j=0; j<3; j++){this.btnsBoard[i][j].setText("");}}
+        for(int i=0; i<3;i++){for(int j=0; j<3; j++){this.imgsBoard[i][j].setImageResource(R.drawable.tct_empty);}}
     }
 }

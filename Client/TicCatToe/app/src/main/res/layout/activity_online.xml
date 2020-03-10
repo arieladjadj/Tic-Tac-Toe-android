@@ -6,7 +6,7 @@
     android:theme="@style/AppTheme"
     android:layout_height="match_parent"
     android:layoutDirection="ltr"
-    android:background="@drawable/tic_tac_toe_board3"
+    android:background="@drawable/tic_tac_toe_board4"
     tools:context=".Online"
     android:orientation="vertical"
     android:id="@+id/main_layout"
@@ -16,6 +16,72 @@
         layout="@layout/toolbar"
         />
 
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@+id/toolbar"
+            android:id="@+id/results"
+            android:weightSum="3"
+            android:orientation="horizontal">
+
+            <ImageView
+                style="@style/ButtonStyle"
+                android:layout_weight="1"
+                android:src="@drawable/tct_x"/>
+            <ImageView
+                style="@style/ButtonStyle"
+                android:layout_weight="1"
+                android:src="@drawable/tct_o"/>
+
+            <ImageView
+                style="@style/ButtonStyle"
+                android:layout_weight="1"
+                android:src="@drawable/tct_d"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/results"
+            android:weightSum="3"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="0"
+                android:id="@+id/o_results"
+                android:gravity="center"
+                android:textColor="@color/color2"
+                android:textSize="40sp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="0"
+                android:id="@+id/x_results"
+                android:gravity="center"
+                android:textColor="@color/color1"
+                android:textSize="40sp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:text="0"
+                android:id="@+id/d_results"
+                android:gravity="center"
+                android:textColor="#000000"
+                android:textSize="40sp"
+                android:layout_weight="1"/>
+
+
+        </LinearLayout>
     <TableLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -24,34 +90,33 @@
         android:columnCount="3"
         android:layout_below="@+id/toolbar"
         >
-
-        <!--Row 1 -->
+    <!--Row 1 -->
         <TableRow
             >
-            <Button
+            <ImageView
                 style="@style/ButtonStyle"
                 />
 
-            <Button
+            <ImageView
                 style="@style/ButtonStyle"
                 />
 
-            <Button
+            <ImageView
                 style="@style/ButtonStyle"
                 />
         </TableRow>
 
         <!-- Row 2-->
         <TableRow>
-            <Button
+            <ImageView
                 style="@style/ButtonStyle"
                 />
 
-            <Button
+            <ImageView
                 style="@style/ButtonStyle"
                 />
 
-            <Button
+            <ImageView
                 style="@style/ButtonStyle"
                 />
 
@@ -59,15 +124,15 @@
 
         <!-- Row 3-->
         <TableRow>
-            <Button
+            <ImageView
                 style="@style/ButtonStyle"
                 />
 
-            <Button
+            <ImageView
                 style="@style/ButtonStyle"
                 />
 
-            <Button
+            <ImageView
                 style="@style/ButtonStyle"
                 />
 

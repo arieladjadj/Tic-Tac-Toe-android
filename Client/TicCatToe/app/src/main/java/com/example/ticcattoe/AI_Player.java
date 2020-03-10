@@ -1,6 +1,7 @@
 package com.example.ticcattoe;
 
 import android.content.Context;
+import android.view.View;
 
 public class AI_Player {
 
@@ -24,7 +25,8 @@ public class AI_Player {
     public void makeMove(char[][] board) {
         Move move = getBestMove(board, this.aiPlayerCH);
         board[move.row][move.col] = this.aiPlayerCH;
-        this.singleMode.btnsBoard[move.row][move.col].setText(String.valueOf(this.aiPlayerCH));
+        if(this.aiPlayerCH == 'O' ) this.singleMode.imgsBoard[move.row][move.col].setImageResource(R.drawable.tct_o);
+        else this.singleMode.imgsBoard[move.row][move.col].setImageResource(R.drawable.tct_x);
         this.singleMode.board[move.row][move.col] = this.aiPlayerCH;
     }
 

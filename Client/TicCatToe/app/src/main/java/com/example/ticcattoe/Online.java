@@ -3,16 +3,25 @@ package com.example.ticcattoe;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.text.InputFilter;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.Toast;
 import android.widget.Toolbar;
+
+import java.io.DataInputStream;
+import java.io.DataOutputStream;
+import java.io.IOException;
+import java.net.Socket;
+import java.net.UnknownHostException;
+import java.util.Scanner;
+
+import static android.widget.Toast.LENGTH_SHORT;
 
 public class Online extends AppCompatActivity implements View.OnClickListener {
 
@@ -22,6 +31,12 @@ public class Online extends AppCompatActivity implements View.OnClickListener {
     char[][] board;
     ImageView[][] imgsBoard;
     char playerCh, opponentCh;
+    public static final String SERVER_IP = "192.168.1.12";
+    public static final int SERVER_PORT = 5000;
+    Socket serverSock;
+    DataInputStream dataInputStream;
+    DataOutputStream dataOutputStream;
+    boolean isPlayerTurn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -71,11 +86,62 @@ public class Online extends AppCompatActivity implements View.OnClickListener {
         });
         waitingDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         waitingDialog.show();
+
+        new Thread(new connect2Server()).start();
+
+
     }
 
+    class connect2Server implements Runnable {
+
+        @Override
+        public void run() {
+            try {
+                serverSock = new Socket(SERVER_IP, SERVER_PORT);
+                dataOutputStream = new DataOutputStream(serverSock.getOutputStream());
+                dataInputStream = new DataInputStream(serverSock.getInputStream());
+                String msgFromServer = dataInputStream.readUTF();
+                if(msgFromServer.equals("wait")){
+                    if(dataInputStream.readUTF().equals("connect")) isPlayerTurn = false;
+                }else  isPlayerTurn = true;
+
+                createBoard();
+
+                //while loop to get msgs from server
+
+
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+
+    }
+    public void showToast(final String toast)
+    {
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                Toast.makeText(Online.this, toast, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private void createBoard() {
+        this.board = new char[3][3];
+        for(int i=0; i<3;i++){ for(int j=0; j<3;j++){ this.board[i][j]='-'; } }
+    }
     @Override
     public void onClick(View view) {
 
+        if(view instanceof ImageView) {
+            if(this.isPlayerTurn != true) Toast.makeText(this, "It is not your turn! ",LENGTH_SHORT).show();
+            else {
+                ImageView img = (ImageView) view;
+                int[] pos = findPos(img);
+                makeMove(pos[0], pos[1]);
+            }
+
+        }
         if(view == stayInActivity ) {
             createWaitingDialog();
         }else if(view == returnToHomePageBtn){
@@ -84,6 +150,43 @@ public class Online extends AppCompatActivity implements View.OnClickListener {
             finish();
         }
     }
+
+    private void makeMove(int row, int col) {
+        if(this.board[row][col] == '-') {
+            if(this.playerCh == 'O') this.imgsBoard[row][col].setImageResource(R.drawable.tct_o);
+            else {this.imgsBoard[row][col].setImageResource(R.drawable.tct_x); }
+            this.board[row][col] = this.playerCh;
+            String boardState = getBoardState();
+            if(boardState == BoardState.NOTHING){
+                //this.opponentCh.makeMove(this.board);
+                //boardState = getBoardState();
+            }
+
+            if(boardState != BoardState.NOTHING){
+                finishGame(boardState);
+            }
+
+        }
+    }
+
+
+    private String getBoardState(){
+        if(BoardState.isWin(this.board, this.opponentCh)) return BoardState.AI_PLAYER_WIN;
+        else if(BoardState.isWin(this.board, this.playerCh)) return BoardState.PLAYER_WIN;
+        else if(BoardState.isDraw(this.board)) return BoardState.DRAW;
+        return BoardState.NOTHING;
+    }
+
+    private int[] findPos(ImageView img){
+        int[] pos = null;
+        for(int i=0; i<3 && pos==null; i++){ for(int j=0;j<3;j++){ if(this.imgsBoard[i][j] == img) pos =  new int[] {i,j}; } }
+        return pos;
+    }
+
+    private void finishGame(String boardState) {
+
+    }
+
 
     @Override
     public void onBackPressed() {

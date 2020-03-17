@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:orientation="vertical"
+    android:weightSum="5"
+    android:layoutDirection="ltr"
+    android:id="@+id/main_frame_layout"
+    android:layout_height="match_parent"
+    tools:context=".HomePage">
+    <include
+        layout="@layout/toolbar"
+        android:id="@+id/homePageToolbar"
+        />
+
+
+    <LinearLayout
+        android:layout_below="@+id/homePageToolbar"
+        android:layout_marginTop="60dp"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:weightSum="5"
+        android:orientation="vertical"
+        android:layoutDirection="ltr"
+        >
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2">
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            >
+
+            <Button
+                android:id="@+id/btn_online"
+                style="@style/checkStyle"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="50dp"
+                android:alpha="0.9"
+                android:background="@drawable/btn"
+                android:drawableTop="@drawable/ic_network_wifi_white_80dp"
+                android:gravity="bottom|center"
+                android:paddingRight="230dp"
+                android:paddingBottom="20dp"
+                android:text="Online"
+                android:textColor="#FFFFFF"
+                android:textSize="21sp" />
+
+
+        </LinearLayout>
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="2"
+            android:weightSum="2"
+            android:layout_marginBottom="30dp"
+            android:orientation="horizontal"
+            >
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:alpha="0.9"
+                android:orientation="vertical"
+                >
+
+                <Button
+                    android:id="@+id/btn_singleMode"
+                    style="@style/checkStyle"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginBottom="10dp"
+                    android:alpha="0.9"
+                    android:background="@drawable/btn"
+                    android:drawableTop="@drawable/ic_computer_black_24dp"
+                    android:gravity="bottom|center"
+                    android:paddingRight="50dp"
+                    android:paddingBottom="20dp"
+                    android:text="Single Mode"
+                    android:textColor="#FFFFFF"
+                    android:textSize="21sp" />
+
+                <Button
+                    android:layout_width="175dp"
+                    android:layout_height="200dp"
+                    android:id="@+id/btn_settings"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="10dp"
+                    android:background="@drawable/btn"
+                    android:gravity="bottom|center"
+                    android:paddingRight="50dp"
+                    android:paddingBottom="20dp"
+                    android:textColor="#FFFFFF"
+                    android:textSize="21sp"
+                    android:drawableTop="@drawable/ic_settings_white_24dp"
+                    android:text="settings" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <Button
+                    style="@style/checkStyle"
+                    android:layout_marginRight="20dp"
+                    android:background="@drawable/btn"
+                    android:text="Scoreboard"
+                    android:id="@+id/btn_scoreBoard"
+                    android:gravity="right|center"
+                    android:paddingRight="20dp"
+                    android:paddingBottom="20dp"
+                    android:drawableTop="@drawable/ic_format_list_numbered_white_80dp"
+                    android:textColor="#FFFFFF"
+                    android:textSize="21sp" />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</FrameLayout>

@@ -34,7 +34,7 @@ public class Online extends AppCompatActivity implements View.OnClickListener {
     public static final String SERVER_IP = "192.168.1.12";
     public static final int SERVER_PORT = 5000;
     Socket serverSock;
-    DataInputStream dataInputStream;
+    Scanner dataInputStream;
     DataOutputStream dataOutputStream;
     boolean isPlayerTurn;
 
@@ -88,8 +88,6 @@ public class Online extends AppCompatActivity implements View.OnClickListener {
         waitingDialog.show();
 
         new Thread(new connect2Server()).start();
-
-
     }
 
     class connect2Server implements Runnable {
@@ -97,25 +95,63 @@ public class Online extends AppCompatActivity implements View.OnClickListener {
         @Override
         public void run() {
             try {
+                showToast("wtf");
                 serverSock = new Socket(SERVER_IP, SERVER_PORT);
+                showToast("Socket created");
                 dataOutputStream = new DataOutputStream(serverSock.getOutputStream());
-                dataInputStream = new DataInputStream(serverSock.getInputStream());
-                String msgFromServer = dataInputStream.readUTF();
+                dataInputStream = new Scanner(serverSock.getInputStream());
+                showToast("Waiting for msg from server");
+                String msgFromServer = dataInputStream.nextLine();
+                showToast(msgFromServer);
                 if(msgFromServer.equals("wait")){
-                    if(dataInputStream.readUTF().equals("connect")) isPlayerTurn = false;
+                    showToast(msgFromServer);
+                    if(dataInputStream.nextLine().equals("connect")) isPlayerTurn = false;
+                    else createExitDialog();
                 }else  isPlayerTurn = true;
+            } catch (IOException e) {
+                e.printStackTrace();
+            }catch (Exception e) {
 
-                createBoard();
+            }
 
-                //while loop to get msgs from server
-
-
+            try {
+                dataOutputStream.writeUTF("well");
             } catch (IOException e) {
                 e.printStackTrace();
             }
-        }
+            createBoard();
 
+                //while loop to get msgs from server
+                while(true) {
+                    try{
+                        String msgFromServer = dataInputStream.nextLine();
+                        showToast(msgFromServer);
+                        if(!msgFromServer.equals("disconnected")) makeOpponentMove(msgFromServer);
+                    }catch (Exception e){
+                        //
+                        Intent intent = new Intent();
+                        setResult(RESULT_OK,intent);
+                        finish();
+
+                        runOnUiThread(new Runnable() {
+                            @Override
+                            public void run() {
+                                createExitDialog();
+                            }
+                        });
+                    }
+                }
+        }
     }
+
+    private void makeOpponentMove(String msgFromServer) {
+        int pos[] = parseMsg(msgFromServer);
+    }
+
+    private int[] parseMsg(String msgFromServer) {
+        return new int[] {0,0};
+    }
+
     public void showToast(final String toast)
     {
         runOnUiThread(new Runnable() {

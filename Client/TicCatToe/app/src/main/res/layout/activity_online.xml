@@ -25,17 +25,22 @@
             android:weightSum="3"
             android:orientation="horizontal">
 
-            <ImageView
-                style="@style/ButtonStyle"
+            <TextView
+                style="@style/checkStyle"
                 android:layout_weight="1"
-                android:src="@drawable/tct_x"/>
-            <ImageView
-                style="@style/ButtonStyle"
+                android:text="X"
+                android:textColor="@color/color2"
+                />
+            <TextView
+                style="@style/checkStyle"
                 android:layout_weight="1"
+                android:text="O"
+                android:textColor="@color/color1"
                 android:src="@drawable/tct_o"/>
 
-            <ImageView
-                style="@style/ButtonStyle"
+            <TextView
+                style="@style/checkStyle"
+                android:text="-"
                 android:layout_weight="1"
                 android:src="@drawable/tct_d"/>
         </LinearLayout>
@@ -50,34 +55,34 @@
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
-                android:text="0"
-                android:id="@+id/o_results"
-                android:gravity="center"
-                android:textColor="@color/color2"
-                android:textSize="40sp"
-                android:layout_weight="1"/>
-
-            <TextView
-                android:layout_width="100dp"
-                android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="2dp"
                 android:text="0"
                 android:id="@+id/x_results"
                 android:gravity="center"
-                android:textColor="@color/color1"
-                android:textSize="40sp"
+                android:textColor="@color/color2"
+                android:textSize="20sp"
                 android:layout_weight="1"/>
 
             <TextView
                 android:layout_width="100dp"
                 android:layout_height="wrap_content"
-                android:layout_margin="5dp"
+                android:layout_margin="2dp"
+                android:text="0"
+                android:id="@+id/o_results"
+                android:gravity="center"
+                android:textColor="@color/color1"
+                android:textSize="20sp"
+                android:layout_weight="1"/>
+
+            <TextView
+                android:layout_width="100dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="2dp"
                 android:text="0"
                 android:id="@+id/d_results"
                 android:gravity="center"
                 android:textColor="#000000"
-                android:textSize="40sp"
+                android:textSize="20sp"
                 android:layout_weight="1"/>
 
 
@@ -93,47 +98,56 @@
     <!--Row 1 -->
         <TableRow
             >
-            <ImageView
-                style="@style/ButtonStyle"
+            <Button
+                style="@style/btnCheckStyle"
+                android:id="@+id/btn00"
                 />
 
-            <ImageView
-                style="@style/ButtonStyle"
+            <Button
+                style="@style/btnCheckStyle"
+                android:id="@+id/btn01"
                 />
 
-            <ImageView
-                style="@style/ButtonStyle"
+            <Button
+                style="@style/btnCheckStyle"
+                android:id="@+id/btn02"
                 />
         </TableRow>
 
         <!-- Row 2-->
         <TableRow>
-            <ImageView
-                style="@style/ButtonStyle"
+            <Button
+                style="@style/btnCheckStyle"
+                android:id="@+id/btn10"
                 />
 
-            <ImageView
-                style="@style/ButtonStyle"
+            <Button
+                style="@style/btnCheckStyle"
+                android:id="@+id/btn11"
                 />
 
-            <ImageView
-                style="@style/ButtonStyle"
+            <Button
+                style="@style/btnCheckStyle"
+                android:id="@+id/btn12"
                 />
 
         </TableRow>
 
         <!-- Row 3-->
         <TableRow>
-            <ImageView
-                style="@style/ButtonStyle"
+            <Button
+                style="@style/btnCheckStyle"
+                android:id="@+id/btn20"
                 />
 
-            <ImageView
-                style="@style/ButtonStyle"
+            <Button
+                style="@style/btnCheckStyle"
+                android:id="@+id/btn21"
                 />
 
-            <ImageView
-                style="@style/ButtonStyle"
+            <Button
+                style="@style/btnCheckStyle"
+                android:id="@+id/btn22"
                 />
 
         </TableRow>

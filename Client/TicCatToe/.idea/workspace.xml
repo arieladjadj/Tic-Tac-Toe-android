@@ -13,6 +13,7 @@
     </shared>
   </component>
   <component name="ChangeListManager">
+<<<<<<< feature/multiplayer
     <list default="true" id="df1eea98-2e23-4d61-8b9e-5c5c5c058c99" name="Default Changelist" comment="">
       <change afterPath="$PROJECT_DIR$/app/src/main/res/layout-small/activity_home_page.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/build_file_checksums.ser" afterDir="false" />
@@ -29,6 +30,9 @@
       <change beforePath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/app/src/main/res/values/styles.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/local.properties" beforeDir="false" afterPath="$PROJECT_DIR$/local.properties" afterDir="false" />
     </list>
+=======
+    <list default="true" id="df1eea98-2e23-4d61-8b9e-5c5c5c058c99" name="Default Changelist" comment="" />
+>>>>>>> local
     <ignored path="$PROJECT_DIR$/build/classes/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -73,11 +77,14 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< feature/multiplayer
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/tct_x.jpg">
           <provider selected="true" editor-type-id="images" />
         </entry>
       </file>
+=======
+>>>>>>> local
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_home_page.xml">
           <provider editor-type-id="android-designer2" />
@@ -92,18 +99,31 @@
         <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
           <provider editor-type-id="android-manifest" />
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< feature/multiplayer
             <state relative-caret-position="119">
               <caret line="7" column="35" selection-start-line="7" selection-start-column="35" selection-end-line="7" selection-end-column="35" />
+=======
+            <state relative-caret-position="68">
+              <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+>>>>>>> local
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
+<<<<<<< feature/multiplayer
         <entry file="file://$PROJECT_DIR$/app/src/main/res/layout-small/activity_home_page.xml">
           <provider editor-type-id="android-designer2" />
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="-17">
               <caret line="81" column="44" selection-start-line="81" selection-start-column="44" selection-end-line="81" selection-end-column="44" />
+=======
+        <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_single_mode.xml">
+          <provider editor-type-id="android-designer2" />
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="199">
+              <caret line="40" column="18" lean-forward="true" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+>>>>>>> local
             </state>
           </provider>
         </entry>
@@ -111,8 +131,13 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app/src/main/res/values/styles.xml">
           <provider selected="true" editor-type-id="text-editor">
+<<<<<<< feature/multiplayer
             <state relative-caret-position="212">
               <caret line="36" selection-start-line="36" selection-end-line="36" />
+=======
+            <state relative-caret-position="331">
+              <caret line="31" selection-start-line="31" selection-end-line="31" />
+>>>>>>> local
             </state>
           </provider>
         </entry>
@@ -194,24 +219,33 @@
               <item name="TicCatToe" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="manifests" type="f94875db:AndroidManifestsGroupNode" />
+<<<<<<< feature/multiplayer
             </path>
             <path>
               <item name="TicCatToe" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
+=======
+>>>>>>> local
+            </path>
+            <path>
+              <item name="TicCatToe" type="1abcf292:AndroidViewProjectNode" />
+              <item name="app" type="feadf853:AndroidModuleNode" />
+              <item name="res" type="d4f16f75:AndroidResFolderNode" />
+<<<<<<< feature/multiplayer
+              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+=======
+>>>>>>> local
             </path>
             <path>
               <item name="TicCatToe" type="1abcf292:AndroidViewProjectNode" />
               <item name="app" type="feadf853:AndroidModuleNode" />
               <item name="res" type="d4f16f75:AndroidResFolderNode" />
               <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
-            </path>
-            <path>
-              <item name="TicCatToe" type="1abcf292:AndroidViewProjectNode" />
-              <item name="app" type="feadf853:AndroidModuleNode" />
-              <item name="res" type="d4f16f75:AndroidResFolderNode" />
-              <item name="layout" type="ddeffd01:AndroidResFolderTypeNode" />
+<<<<<<< feature/multiplayer
               <item name="activity_home_page" type="c431d0b8:AndroidResGroupNode" />
+=======
+>>>>>>> local
             </path>
             <path>
               <item name="TicCatToe" type="1abcf292:AndroidViewProjectNode" />
@@ -339,7 +373,10 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
+<<<<<<< feature/multiplayer
     <editor active="true" />
+=======
+>>>>>>> local
     <layout>
       <window_info id="Captures" order="0" side_tool="true" weight="0.25" />
       <window_info id="Capture Tool" order="1" />
@@ -355,15 +392,25 @@
       <window_info anchor="bottom" id="Terminal" order="2" />
       <window_info anchor="bottom" id="Event Log" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="4" />
+<<<<<<< feature/multiplayer
       <window_info anchor="bottom" id="Build" order="5" weight="0.2782324" />
       <window_info anchor="bottom" id="Android Profiler" order="6" weight="0.32847896" />
       <window_info anchor="bottom" id="Run" order="7" visible="true" weight="0.32405892" />
+=======
+      <window_info active="true" anchor="bottom" id="Build" order="5" visible="true" weight="0.27986908" />
+      <window_info anchor="bottom" id="Android Profiler" order="6" />
+      <window_info anchor="bottom" id="Run" order="7" weight="0.32847896" />
+>>>>>>> local
       <window_info anchor="bottom" id="Debug" order="8" weight="0.32847896" />
       <window_info anchor="right" id="Device File Explorer" order="0" side_tool="true" />
       <window_info anchor="right" id="Capture Analysis" order="1" />
       <window_info anchor="right" id="Gradle" order="2" weight="0.3290469" />
       <window_info anchor="right" id="Theme Preview" order="3" />
+<<<<<<< feature/multiplayer
       <window_info active="true" anchor="right" id="Preview" order="4" visible="true" weight="0.32829046" />
+=======
+      <window_info anchor="right" id="Preview" order="4" visible="true" weight="0.32954547" />
+>>>>>>> local
       <window_info anchor="right" id="Palette&#9;" order="5" />
       <window_info anchor="right" id="Assistant" order="6" weight="0.3290469" />
     </layout>
@@ -401,8 +448,13 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/values/colors.xml">
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< feature/multiplayer
         <state relative-caret-position="85">
           <caret line="5" column="32" selection-start-line="5" selection-start-column="26" selection-end-line="5" selection-end-column="32" />
+=======
+        <state relative-caret-position="331">
+          <caret line="31" selection-start-line="31" selection-end-line="31" />
+>>>>>>> local
         </state>
       </provider>
     </entry>
@@ -435,12 +487,23 @@
         </state>
       </provider>
     </entry>
+<<<<<<< feature/multiplayer
     <entry file="file://$PROJECT_DIR$/app/src/main/res/drawable/tic_tac_toe_board4.jpg">
       <provider selected="true" editor-type-id="images" />
+=======
+    <entry file="file://$PROJECT_DIR$/app/src/main/AndroidManifest.xml">
+      <provider editor-type-id="android-manifest" />
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="68">
+          <caret line="4" column="8" selection-start-line="4" selection-start-column="8" selection-end-line="4" selection-end-column="8" />
+        </state>
+      </provider>
+>>>>>>> local
     </entry>
     <entry file="file://$PROJECT_DIR$/app/src/main/res/layout/activity_single_mode.xml">
       <provider editor-type-id="android-designer2" />
       <provider selected="true" editor-type-id="text-editor">
+<<<<<<< feature/multiplayer
         <state>
           <caret line="21" column="43" selection-start-line="21" selection-start-column="31" selection-end-line="21" selection-end-column="43" />
         </state>
@@ -498,6 +561,10 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-17">
           <caret line="81" column="44" selection-start-line="81" selection-start-column="44" selection-end-line="81" selection-end-column="44" />
+=======
+        <state relative-caret-position="199">
+          <caret line="40" column="18" lean-forward="true" selection-start-line="40" selection-start-column="18" selection-end-line="40" selection-end-column="18" />
+>>>>>>> local
         </state>
       </provider>
     </entry>
